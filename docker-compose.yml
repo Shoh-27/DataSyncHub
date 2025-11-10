@@ -73,6 +73,25 @@ services:
         restart: unless-stopped
         command: --default-authentication-plugin=mysql_native_password
 
+    # PostgreSQL Database (Jobs, Projects, Offers)
+    postgres:
+        image: postgres:16-alpine
+        container_name: datasync_postgres
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_DB: ${PGSQL_DATABASE}
+            POSTGRES_USER: ${PGSQL_USERNAME}
+            POSTGRES_PASSWORD: ${PGSQL_PASSWORD}
+        volumes:
+            - postgres_data:/var/lib/postgresql/data
+            - ./docker/postgres/postgresql.conf:/etc/postgresql/postgresql.conf
+        networks:
+            - datasync_network
+        restart: unless-stopped
+        command: postgres -c config_file=/etc/postgresql/postgresql.conf
+
+
 
 networks:
     datasync_network:
