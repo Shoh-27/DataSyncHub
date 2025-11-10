@@ -91,6 +91,23 @@ services:
         restart: unless-stopped
         command: postgres -c config_file=/etc/postgresql/postgresql.conf
 
+    # MongoDB Database (XP Logs, Badges, Events)
+    mongodb:
+        image: mongo:7.0
+        container_name: datasync_mongodb
+        ports:
+            - "27017:27017"
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+            MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
+        volumes:
+            - mongodb_data:/data/db
+            - ./docker/mongodb/mongod.conf:/etc/mongod.conf
+        networks:
+            - datasync_network
+        restart: unless-stopped
+
 
 
 networks:
