@@ -67,7 +67,7 @@ services:
             MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
         volumes:
             - mysql_data:/var/lib/mysql
-            - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+            - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.conf
         networks:
             - datasync_network
         restart: unless-stopped
