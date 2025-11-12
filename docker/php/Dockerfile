@@ -43,12 +43,16 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Copy PHP configuration
 COPY docker/php/php.ini /usr/local/etc/php/php.ini
-COPY docker/php/php-fpm.conf /usr/local/etc/php-fpm.d/www.conf
+COPY docker/php/php-fpm.conf /usr/local/etc/php-fpm.conf
+COPY docker/php/www.conf /usr/local/etc/php-fpm.d/www.conf
 
 # Set permissions
 RUN addgroup -g 1000 www && \
     adduser -D -u 1000 -G www www && \
-    chown -R www:www /var/www/html
+    mkdir -p /var/log && \
+    touch /var/log/php-fpm-access.log /var/log/php-fpm-error.log && \
+    chown -R www:www /var/www/html /var/log && \
+    chmod -R 775 /var/log
 
 # Switch to www user
 USER www
