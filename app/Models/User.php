@@ -51,4 +51,15 @@ class User extends Authenticatable
         'two_factor_enabled' => 'boolean',
         'deleted_at' => 'datetime',
     ];
+
+    // Relationships
+    public function oauthProviders()
+    {
+        return $this->hasMany(OauthProvider::class);
+    }
+
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class);
+    }
 }
