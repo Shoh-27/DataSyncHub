@@ -62,4 +62,25 @@ class User extends Authenticatable
     {
         return $this->hasOne(Wallet::class);
     }
+
+    // Scopes
+    public function scopeActive($query)
+    {
+        return $query->where('account_status', 'active');
+    }
+
+    public function scopeFreelancers($query)
+    {
+        return $query->where('role', 'freelancer');
+    }
+
+    public function scopeClients($query)
+    {
+        return $query->where('role', 'client');
+    }
+
+    public function scopeVerified($query)
+    {
+        return $query->whereNotNull('email_verified_at');
+    }
 }
