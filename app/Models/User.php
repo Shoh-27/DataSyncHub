@@ -9,15 +9,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    protected $connection = 'mysql';
+
     protected $fillable = [
         'name',
         'email',
@@ -33,11 +30,6 @@ class User extends Authenticatable
         'two_factor_enabled',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
@@ -82,5 +74,46 @@ class User extends Authenticatable
     public function scopeVerified($query)
     {
         return $query->whereNotNull('email_verified_at');
+    }
+
+    // Helper methods
+    public function isFreelancer(): bool
+    {
+        return $this->role === 'freelancer';
+    }
+
+    public function isClient(): bool
+    {
+        return $this->role === 'client';
+    }
+
+    public function isModerator(): bool
+    {
+        return $this->role === 'moderator';
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function hasRole(string $role): bool
+    {
+        return $this->role === $role;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->account_status === 'active';
+    }
+
+    public function isSuspended(): bool
+    {
+        return $this->account_status === 'suspended';
+    }
+
+    public function hasSkill(int $skillId): bool
+    {
+        return in_array($skillId, $this->skills ?? []);
     }
 }
