@@ -27,4 +27,12 @@ class RegisterRequest extends FormRequest
         ];
     }
 
+    public function messages(): array
+    {
+        return [
+            'email.unique' => 'This email address is already registered.',
+            'role.in' => 'Role must be either client or freelancer.',
+            'password.min' => 'Password must be at least 8 characters.',
+        ];
+    }
 }
