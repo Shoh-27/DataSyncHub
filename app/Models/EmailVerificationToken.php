@@ -36,4 +36,9 @@ class EmailVerificationToken extends Model
     {
         return Str::random(64);
     }
+
+    public function scopeValid($query)
+    {
+        return $query->where('expires_at', '>', now());
+    }
 }
