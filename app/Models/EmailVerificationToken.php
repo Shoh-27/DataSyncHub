@@ -31,4 +31,9 @@ class EmailVerificationToken extends Model
     {
         return $this->expires_at->isPast();
     }
+
+    public static function generateToken(): string
+    {
+        return Str::random(64);
+    }
 }
