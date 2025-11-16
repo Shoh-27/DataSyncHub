@@ -29,5 +29,11 @@ class UpdateProfileRequest extends FormRequest
         ];
     }
 
-
+    public function messages(): array
+    {
+        return [
+            'skills.max' => 'You can select a maximum of 15 skills.',
+            'avatar.max' => 'Avatar image must not exceed 2MB.',
+        ];
+    }
 }
