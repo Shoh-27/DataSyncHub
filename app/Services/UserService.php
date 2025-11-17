@@ -62,5 +62,24 @@ class UserService
             count($user->skills) < 3;
     }
 
+    /**
+     * Get user profile with gamification data
+     */
+    public function getUserProfile(int $userId): array
+    {
+        $user = User::findOrFail($userId);
+
+        if (!$user->isActive()) {
+            throw new \Exception('User account is not active', 403);
+        }
+
+        $gamificationData = $this->gamificationService->getUserStats($userId);
+
+        return [
+            'user' => $user,
+            'gamification' => $gamificationData,
+        ];
+    }
+
 
 }
