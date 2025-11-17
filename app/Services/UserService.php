@@ -81,5 +81,18 @@ class UserService
         ];
     }
 
+    /**
+     * Deactivate user account
+     */
+    public function deactivateAccount(User $user): void
+    {
+        $user->update([
+            'account_status' => 'deactivated',
+        ]);
+
+        // Revoke all tokens
+        $user->tokens()->delete();
+    }
+
 
 }
