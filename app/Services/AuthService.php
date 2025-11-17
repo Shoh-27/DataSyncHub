@@ -145,5 +145,32 @@ class AuthService
         return $user;
     }
 
+    /**
+     * Send password reset link
+     */
+    public function sendPasswordResetLink(string $email): void
+    {
+        $user = User::where('email', $email)->first();
+
+        if (!$user) {
+            // Don't reveal if email exists
+            return;
+        }
+
+        $token = Str::random(64);
+
+        DB::connection('mysql')->table('password_reset_tokens')->updateOrInsert(
+            ['email' => $email],
+            [
+                'token' => Hash::make($token),
+                'created_at' => now(),
+            ]
+        );
+
+        $user->notify(new PasswordResetNotification($token));
+    }
+
+
+
 
 }
