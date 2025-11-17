@@ -94,5 +94,22 @@ class UserService
         $user->tokens()->delete();
     }
 
+    /**
+     * Delete user account (GDPR)
+     */
+    public function deleteAccount(User $user): void
+    {
+        // Delete avatar
+        if ($user->avatar_url) {
+            Storage::disk('public')->delete($user->avatar_url);
+        }
+
+        // Soft delete user
+        $user->delete();
+
+        // Schedule permanent deletion after 90 days
+        // This would be handled by a scheduled job
+    }
+
 
 }
