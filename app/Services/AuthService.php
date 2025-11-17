@@ -77,4 +77,30 @@ class AuthService
         return $this->generateAuthResponse($user, $remember);
     }
 
+    /**
+     * Generate authentication response with tokens
+     */
+    public function generateAuthResponse(User $user, bool $remember = false): array
+    {
+        // Revoke existing tokens
+        $user->tokens()->delete();
+
+        // Generate new token
+        $expiresAt = $remember ? now()->addDays(30) : now()->addDays(7);
+
+        $token = $user->createToken(
+            'auth-token',
+            ['*'],
+            $expiresAt
+        )->plainTextToken;
+
+        return [
+            'user' => $user,
+            'access_token' => $token,
+            'token_type' => 'Bearer',
+            'expires_at' => $expiresAt->toISOString(),
+        ];
+    }
+
+
 }
