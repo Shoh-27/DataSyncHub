@@ -121,4 +121,29 @@ class AuthService
         $user->notify(new EmailVerificationNotification($token->token));
     }
 
+    /**
+     * Verify email with token
+     */
+    public function verifyEmail(string $token): User
+    {
+        $verificationToken = EmailVerificationToken::where('token', $token)
+            ->valid()
+            ->firstOrFail();
+
+        $user = $verificationToken->user;
+
+        if ($user->hasVerifiedEmail()) {
+            throw new \Exception('Email already verified');
+        }
+
+        $user->markEmailAsVerified();
+        $verificationToken->delete();
+
+        // Award XP for email verification (profile completion)
+        $this->gamificationService->awardXp($user->id, 50, 'email_verified');
+
+        return $user;
+    }
+
+
 }
