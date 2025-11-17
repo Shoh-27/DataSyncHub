@@ -170,7 +170,39 @@ class AuthService
         $user->notify(new PasswordResetNotification($token));
     }
 
+    /**
+     * Reset password
+     */
+    public function resetPassword(array $data): void
+    {
+        $resetRecord = DB::connection('mysql')
+            ->table('password_reset_tokens')
+            ->where('email', $data['email'])
+            ->first();
 
+        if (!$resetRecord || !Hash::check($data['token'], $resetRecord->token)) {
+            throw new \Exception('Invalid or expired reset token', 400);
+        }
+
+        // Check if token is expired (1 hour)
+        if (now()->diffInMinutes($resetRecord->created_at) > 60) {
+            throw new \Exception('Reset token has expired', 400);
+        }
+
+        $user = User::where('email', $data['email'])->firstOrFail();
+        $user->update([
+            'password' => Hash::make($data['password']),
+        ]);
+
+        // Revoke all tokens
+        $user->tokens()->delete();
+
+        // Delete reset token
+        DB::connection('mysql')
+            ->table('password_reset_tokens')
+            ->where('email', $data['email'])
+            ->delete();
+    }
 
 
 }
