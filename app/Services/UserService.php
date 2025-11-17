@@ -111,5 +111,31 @@ class UserService
         // This would be handled by a scheduled job
     }
 
+    /**
+     * Suspend user account (admin action)
+     */
+    public function suspendAccount(int $userId, string $reason): void
+    {
+        $user = User::findOrFail($userId);
 
+        $user->update([
+            'account_status' => 'suspended',
+        ]);
+
+        $user->tokens()->delete();
+
+        // Log suspension reason (would be stored in admin logs)
+    }
+
+    /**
+     * Reactivate suspended account
+     */
+    public function reactivateAccount(int $userId): void
+    {
+        $user = User::findOrFail($userId);
+
+        $user->update([
+            'account_status' => 'active',
+        ]);
+    }
 }
