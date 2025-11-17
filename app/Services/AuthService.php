@@ -102,5 +102,23 @@ class AuthService
         ];
     }
 
+    /**
+     * Send email verification
+     */
+    public function sendEmailVerification(User $user): void
+    {
+        // Delete old tokens
+        EmailVerificationToken::where('user_id', $user->id)->delete();
+
+        // Create new token
+        $token = EmailVerificationToken::create([
+            'user_id' => $user->id,
+            'token' => EmailVerificationToken::generateToken(),
+            'expires_at' => now()->addHours(24),
+        ]);
+
+        // Send notification
+        $user->notify(new EmailVerificationNotification($token->token));
+    }
 
 }
