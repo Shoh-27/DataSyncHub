@@ -51,5 +51,16 @@ class UserService
         return Storage::url($filename);
     }
 
+    /**
+     * Check if profile is incomplete
+     */
+    private function isProfileIncomplete(User $user): bool
+    {
+        return empty($user->bio) ||
+            empty($user->avatar_url) ||
+            empty($user->skills) ||
+            count($user->skills) < 3;
+    }
+
 
 }
