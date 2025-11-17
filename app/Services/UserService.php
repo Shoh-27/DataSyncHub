@@ -35,5 +35,21 @@ class UserService
         return $user->fresh();
     }
 
+    /**
+     * Upload user avatar
+     */
+    private function uploadAvatar(User $user, UploadedFile $file): string
+    {
+        // Delete old avatar
+        if ($user->avatar_url) {
+            Storage::disk('public')->delete($user->avatar_url);
+        }
+
+        $filename = 'avatars/' . $user->id . '_' . time() . '.' . $file->extension();
+        $path = $file->storeAs('public', $filename);
+
+        return Storage::url($filename);
+    }
+
 
 }
