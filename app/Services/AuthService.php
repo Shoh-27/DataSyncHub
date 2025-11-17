@@ -204,5 +204,19 @@ class AuthService
             ->delete();
     }
 
+    /**
+     * Logout user
+     */
+    public function logout(User $user): void
+    {
+        $user->currentAccessToken()->delete();
+    }
 
+    /**
+     * Logout from all devices
+     */
+    public function logoutAll(User $user): void
+    {
+        $user->tokens()->delete();
+    }
 }
