@@ -51,5 +51,30 @@ class AuthService
         });
     }
 
+    /**
+     * Authenticate user and generate token
+     */
+    public function login(array $credentials, bool $remember = false): array
+    {
+        $user = User::where('email', $credentials['email'])->first();
+
+        if (!$user || !Hash::check($credentials['password'], $user->password)) {
+            throw new \Exception('Invalid credentials', 401);
+        }
+
+        if ($user->account_status !== 'active') {
+            throw new \Exception('Your account has been ' . $user->account_status, 403);
+        }
+
+        // Check if 2FA is enabled
+        if ($user->two_factor_enabled) {
+            return [
+                'requires_2fa' => true,
+                'user_id' => $user->id,
+            ];
+        }
+
+        return $this->generateAuthResponse($user, $remember);
+    }
 
 }
