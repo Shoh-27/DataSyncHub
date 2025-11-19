@@ -71,5 +71,39 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * Get authenticated user
+     */
+    public function me(Request $request): JsonResponse
+    {
+        return response()->json([
+            'user' => new UserResource($request->user()),
+        ], 200);
+    }
+
+    /**
+     * Logout user
+     */
+    public function logout(Request $request): JsonResponse
+    {
+        $this->authService->logout($request->user());
+
+        return response()->json([
+            'message' => 'Logged out successfully',
+        ], 200);
+    }
+
+    /**
+     * Logout from all devices
+     */
+    public function logoutAll(Request $request): JsonResponse
+    {
+        $this->authService->logoutAll($request->user());
+
+        return response()->json([
+            'message' => 'Logged out from all devices',
+        ], 200);
+    }
+
 
 }
