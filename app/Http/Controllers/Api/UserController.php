@@ -58,5 +58,45 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Deactivate account
+     */
+    public function deactivate(Request $request): JsonResponse
+    {
+        try {
+            $this->userService->deactivateAccount($request->user());
 
+            return response()->json([
+                'message' => 'Account deactivated successfully',
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Account deactivation failed',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    /**
+     * Delete account (GDPR)
+     */
+    public function destroy(Request $request): JsonResponse
+    {
+        $request->validate([
+            'confirmation' => 'required|string|in:DELETE MY ACCOUNT',
+        ]);
+
+        try {
+            $this->userService->deleteAccount($request->user());
+
+            return response()->json([
+                'message' => 'Account scheduled for deletion in 90 days',
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Account deletion failed',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
 }
