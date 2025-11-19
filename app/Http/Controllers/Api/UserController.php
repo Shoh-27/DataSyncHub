@@ -38,4 +38,25 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Get user profile by ID
+     */
+    public function show(int $id): JsonResponse
+    {
+        try {
+            $profile = $this->userService->getUserProfile($id);
+
+            return response()->json([
+                'user' => new UserResource($profile['user']),
+                'gamification' => $profile['gamification'],
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Failed to fetch user profile',
+                'error' => $e->getMessage(),
+            ], $e->getCode() ?: 404);
+        }
+    }
+
+
 }
