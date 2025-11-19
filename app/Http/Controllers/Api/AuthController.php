@@ -17,5 +17,59 @@ class AuthController extends Controller
         private AuthService $authService
     ) {}
 
+    /**
+     * Register new user
+     */
+    public function register(RegisterRequest $request): JsonResponse
+    {
+        try {
+            $user = $this->authService->register($request->validated());
+
+            return response()->json([
+                'message' => 'Registration successful. Please verify your email.',
+                'user' => new UserResource($user),
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Registration failed',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+    /**
+     * Login user
+     */
+    public function login(LoginRequest $request): JsonResponse
+    {
+        try {
+            $result = $this->authService->login(
+                $request->only('email', 'password'),
+                $request->boolean('remember')
+            );
+
+            if (isset($result['requires_2fa'])) {
+                return response()->json([
+                    'message' => 'Two-factor authentication required',
+                    'requires_2fa' => true,
+                    'user_id' => $result['user_id'],
+                ], 200);
+            }
+
+            return response()->json([
+                'message' => 'Login successful',
+                'user' => new UserResource($result['user']),
+                'access_token' => $result['access_token'],
+                'token_type' => $result['token_type'],
+                'expires_at' => $result['expires_at'],
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Login failed',
+                'error' => $e->getMessage(),
+            ], $e->getCode() ?: 401);
+        }
+    }
+
 
 }
