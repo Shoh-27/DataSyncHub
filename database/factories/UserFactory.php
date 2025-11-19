@@ -11,15 +11,10 @@ use Illuminate\Support\Str;
  */
 class UserFactory extends Factory
 {
-    /**
-     * The current password being used by the factory.
-     */
-    protected static ?string $password;
+    protected static ?string $password = null;
 
     /**
      * Define the model's default state.
-     *
-     * @return array<string, mixed>
      */
     public function definition(): array
     {
@@ -28,6 +23,14 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            'role' => fake()->randomElement(['client', 'freelancer']),
+            'account_status' => 'active',
+            'bio' => fake()->paragraph(),
+            'timezone' => fake()->timezone(),
+            'language' => 'en',
+            'skills' => [1, 2, 3],
+            'profile_visibility' => 'public',
+            'two_factor_enabled' => false,
             'remember_token' => Str::random(10),
         ];
     }
@@ -39,6 +42,36 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+
+    /**
+     * Indicate that the user is a freelancer.
+     */
+    public function freelancer(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => 'freelancer',
+        ]);
+    }
+
+    /**
+     * Indicate that the user is a client.
+     */
+    public function client(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'role' => 'client',
+        ]);
+    }
+
+    /**
+     * Indicate that the user is suspended.
+     */
+    public function suspended(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'account_status' => 'suspended',
         ]);
     }
 }
