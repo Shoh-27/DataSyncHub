@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\ResetPasswordRequest;
-use App\Http\Resources\UserResource;
 use App\Services\AuthService;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -149,5 +148,38 @@ class AuthController extends Controller
         }
     }
 
+    /**
+     * Send password reset link
+     */
+    public function forgotPassword(Request $request): JsonResponse
+    {
+        $request->validate([
+            'email' => 'required|email',
+        ]);
 
+        $this->authService->sendPasswordResetLink($request->email);
+
+        return response()->json([
+            'message' => 'Password reset link sent to your email',
+        ], 200);
+    }
+
+    /**
+     * Reset password
+     */
+    public function resetPassword(ResetPasswordRequest $request): JsonResponse
+    {
+        try {
+            $this->authService->resetPassword($request->validated());
+
+            return response()->json([
+                'message' => 'Password reset successfully',
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Password reset failed',
+                'error' => $e->getMessage(),
+            ], 400);
+        }
+    }
 }
