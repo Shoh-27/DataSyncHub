@@ -105,5 +105,49 @@ class AuthController extends Controller
         ], 200);
     }
 
+    /**
+     * Resend email verification
+     */
+    public function resendVerification(Request $request): JsonResponse
+    {
+        $user = $request->user();
+
+        if ($user->hasVerifiedEmail()) {
+            return response()->json([
+                'message' => 'Email already verified',
+            ], 400);
+        }
+
+        $this->authService->sendEmailVerification($user);
+
+        return response()->json([
+            'message' => 'Verification email sent',
+        ], 200);
+    }
+
+    /**
+     * Verify email
+     */
+    public function verifyEmail(Request $request): JsonResponse
+    {
+        $request->validate([
+            'token' => 'required|string',
+        ]);
+
+        try {
+            $user = $this->authService->verifyEmail($request->token);
+
+            return response()->json([
+                'message' => 'Email verified successfully',
+                'user' => new UserResource($user),
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Email verification failed',
+                'error' => $e->getMessage(),
+            ], 400);
+        }
+    }
+
 
 }
