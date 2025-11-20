@@ -34,5 +34,17 @@
     --color-border-secondary: #3a3a4e;
     --color-border-accent: #00f0ff;
     
-
+    /* Glow Effects */
+    --glow-primary: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary);
+    --glow-secondary: 0 0 10px var(--color-secondary), 0 0 20px var(--color-secondary);
+    --glow-accent: 0 0 10px var(--color-accent), 0 0 20px var(--color-accent);
+    --glow-success: 0 0 10px var(--color-success), 0 0 20px var(--color-success);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.6);
+    
+    
   }
