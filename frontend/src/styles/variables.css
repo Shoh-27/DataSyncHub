@@ -95,5 +95,19 @@
     --z-popover: 1060;
     --z-tooltip: 1070;
     
+    /* Level Colors */
+    --level-newbie: #808080;
+    --level-junior: #4169e1;
+    --level-mid1: #00bfff;
+    --level-mid2: #00ff7f;
+    --level-mid3: #ffd700;
+    --level-senior1: #ff4500;
+    --level-senior2: #ff00ff;
     
+    /* Badge Rarity Colors */
+    --rarity-common: #9ca3af;
+    --rarity-rare: #3b82f6;
+    --rarity-epic: #8b5cf6;
+    --rarity-legendary: #f59e0b;
   }
+  
