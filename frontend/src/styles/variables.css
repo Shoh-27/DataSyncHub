@@ -1,0 +1,38 @@
+:root {
+    /* Cyberpunk Color Palette */
+    --color-primary: #00f0ff;
+    --color-primary-dark: #00b8cc;
+    --color-primary-light: #66f3ff;
+    
+    --color-secondary: #ff00ff;
+    --color-secondary-dark: #cc00cc;
+    --color-secondary-light: #ff66ff;
+    
+    --color-accent: #ffff00;
+    --color-accent-dark: #cccc00;
+    --color-accent-light: #ffff66;
+    
+    --color-success: #00ff41;
+    --color-warning: #ff9500;
+    --color-error: #ff0055;
+    --color-info: #00f0ff;
+    
+    /* Background Colors */
+    --color-bg-primary: #0a0a0f;
+    --color-bg-secondary: #151520;
+    --color-bg-tertiary: #1f1f2e;
+    --color-bg-elevated: #2a2a3e;
+    
+    /* Text Colors */
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #b0b0c8;
+    --color-text-tertiary: #808099;
+    --color-text-muted: #50505f;
+    
+    /* Border Colors */
+    --color-border-primary: #2a2a3e;
+    --color-border-secondary: #3a3a4e;
+    --color-border-accent: #00f0ff;
+    
+
+  }
