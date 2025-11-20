@@ -1,0 +1,113 @@
+:root {
+    /* Cyberpunk Color Palette */
+    --color-primary: #00f0ff;
+    --color-primary-dark: #00b8cc;
+    --color-primary-light: #66f3ff;
+    
+    --color-secondary: #ff00ff;
+    --color-secondary-dark: #cc00cc;
+    --color-secondary-light: #ff66ff;
+    
+    --color-accent: #ffff00;
+    --color-accent-dark: #cccc00;
+    --color-accent-light: #ffff66;
+    
+    --color-success: #00ff41;
+    --color-warning: #ff9500;
+    --color-error: #ff0055;
+    --color-info: #00f0ff;
+    
+    /* Background Colors */
+    --color-bg-primary: #0a0a0f;
+    --color-bg-secondary: #151520;
+    --color-bg-tertiary: #1f1f2e;
+    --color-bg-elevated: #2a2a3e;
+    
+    /* Text Colors */
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #b0b0c8;
+    --color-text-tertiary: #808099;
+    --color-text-muted: #50505f;
+    
+    /* Border Colors */
+    --color-border-primary: #2a2a3e;
+    --color-border-secondary: #3a3a4e;
+    --color-border-accent: #00f0ff;
+    
+    /* Glow Effects */
+    --glow-primary: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary);
+    --glow-secondary: 0 0 10px var(--color-secondary), 0 0 20px var(--color-secondary);
+    --glow-accent: 0 0 10px var(--color-accent), 0 0 20px var(--color-accent);
+    --glow-success: 0 0 10px var(--color-success), 0 0 20px var(--color-success);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.6);
+    
+    /* Typography */
+    --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-family-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --font-family-display: 'Orbitron', 'Exo 2', sans-serif;
+    
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-full: 9999px;
+    
+    /* Transitions */
+    --transition-fast: 150ms ease-in-out;
+    --transition-base: 250ms ease-in-out;
+    --transition-slow: 350ms ease-in-out;
+    
+    /* Z-Index Layers */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+    
+    /* Level Colors */
+    --level-newbie: #808080;
+    --level-junior: #4169e1;
+    --level-mid1: #00bfff;
+    --level-mid2: #00ff7f;
+    --level-mid3: #ffd700;
+    --level-senior1: #ff4500;
+    --level-senior2: #ff00ff;
+    
+    /* Badge Rarity Colors */
+    --rarity-common: #9ca3af;
+    --rarity-rare: #3b82f6;
+    --rarity-epic: #8b5cf6;
+    --rarity-legendary: #f59e0b;
+  }
+  
