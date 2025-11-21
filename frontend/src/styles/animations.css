@@ -189,4 +189,21 @@
     animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   }
   
+  /* Transition Classes */
+  .transition-all {
+    transition: all var(--transition-base);
+  }
+  
+  .transition-colors {
+    transition: color var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast);
+  }
+  
+  .transition-transform {
+    transition: transform var(--transition-base);
+  }
+  
+  .transition-opacity {
+    transition: opacity var(--transition-base);
+  }
+  
   
