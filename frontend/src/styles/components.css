@@ -494,4 +494,98 @@
     text-transform: uppercase;
   }
   
+  /* Tooltip */
+  .tooltip {
+    position: relative;
+  }
+  
+  .tooltip-content {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-xs);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+    z-index: var(--z-tooltip);
+  }
+  
+  .tooltip:hover .tooltip-content {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Avatar */
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+    border: 2px solid var(--color-primary);
+    box-shadow: var(--glow-primary);
+  }
+  
+  .avatar-sm {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .avatar-lg {
+    width: 64px;
+    height: 64px;
+  }
+  
+  .avatar-xl {
+    width: 96px;
+    height: 96px;
+  }
+  
+  /* Table */
+  .table-container {
+    overflow-x: auto;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border-primary);
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table thead {
+    background: var(--color-bg-tertiary);
+    border-bottom: 2px solid var(--color-primary);
+  }
+  
+  .table th {
+    padding: var(--spacing-md);
+    text-align: left;
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+  }
+  
+  .table td {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border-primary);
+  }
+  
+  .table tbody tr {
+    transition: background-color var(--transition-fast);
+  }
+  
+  .table tbody tr:hover {
+    background: var(--color-bg-tertiary);
+  }
+  
   
