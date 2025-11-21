@@ -206,4 +206,25 @@
     transition: opacity var(--transition-base);
   }
   
+  /* Hover Effects */
+  .hover-lift {
+    transition: transform var(--transition-base);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+  
+  .hover-glow:hover {
+    box-shadow: var(--glow-primary);
+  }
+  
+  .hover-scale {
+    transition: transform var(--transition-base);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+  
   
