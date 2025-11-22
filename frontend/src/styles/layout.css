@@ -150,4 +150,28 @@
     color: var(--color-primary);
   }
   
+  /* Content */
+  .content {
+    flex: 1;
+    padding: var(--spacing-xl) 0;
+  }
   
+  .content-header {
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .content-title {
+    font-size: var(--font-size-4xl);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .content-subtitle {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+  }
+  
+  .content-body {
+    margin-bottom: var(--spacing-xl);
+  }
+  
+ 
