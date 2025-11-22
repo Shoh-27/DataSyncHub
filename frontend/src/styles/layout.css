@@ -10,4 +10,96 @@
     flex-direction: column;
   }
   
+  /* Navbar */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+    background: var(--color-bg-secondary);
+    border-bottom: 2px solid var(--color-primary);
+    box-shadow: 0 4px 20px rgba(0, 240, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md) 0;
+  }
+  
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    text-shadow: var(--glow-primary);
+  }
+  
+  .navbar-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+  }
+  
+  .navbar-link {
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    transition: all var(--transition-base);
+    position: relative;
+  }
+  
+  .navbar-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width var(--transition-base);
+  }
+  
+  .navbar-link:hover,
+  .navbar-link.active {
+    color: var(--color-primary);
+    text-shadow: var(--glow-primary);
+  }
+  
+  .navbar-link:hover::after,
+  .navbar-link.active::after {
+    width: 100%;
+  }
+  
+  .navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+  
+  .navbar-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    width: 28px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .navbar-toggle-line {
+    width: 100%;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 2px;
+    transition: all var(--transition-base);
+  }
+  
   
