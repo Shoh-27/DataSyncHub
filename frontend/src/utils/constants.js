@@ -51,3 +51,20 @@ export const CONNECT_PACKAGES = [
   { id: 4, connects: 250, price: 90.0, bonus: 50 },
 ];
 
+export const STORAGE_KEYS = {
+  AUTH_TOKEN: 'datasynchub_token',
+  USER: 'datasynchub_user',
+  THEME: 'datasynchub_theme',
+};
+
+export const NOTIFICATION_TYPES = {
+  SUCCESS: 'success',
+  ERROR: 'error',
+  WARNING: 'warning',
+  INFO: 'info',
+};
+
+export const PAGINATION = {
+  DEFAULT_LIMIT: 20,
+  MAX_LIMIT: 100,
+};
