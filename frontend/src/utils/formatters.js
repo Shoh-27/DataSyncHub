@@ -85,4 +85,16 @@ export const formatCurrency = (amount, currency = 'USD') => {
     return `${diffInYears}y ago`;
   };
   
+  export const truncateText = (text, maxLength = 100) => {
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength) + '...';
+  };
   
+  export const capitalizeFirst = str => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+  
+  export const formatPercentage = (value, total) => {
+    if (total === 0) return '0%';
+    return `${Math.round((value / total) * 100)}%`;
+  };
