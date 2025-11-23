@@ -1,0 +1,15 @@
+
+import axios from 'axios';
+import { API_BASE_URL, STORAGE_KEYS } from '../utils/constants';
+
+const axiosInstance = axios.create({
+  baseURL: API_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  timeout: 30000,
+});
+
+
+
+export default axiosInstance;
