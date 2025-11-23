@@ -34,4 +34,12 @@ export const isValidEmail = email => {
     }
   };
   
+  export const validateNumber = value => {
+    return !isNaN(parseFloat(value)) && isFinite(value);
+  };
+  
+  export const validatePositiveNumber = value => {
+    return validateNumber(value) && parseFloat(value) > 0;
+  };
+  
   
