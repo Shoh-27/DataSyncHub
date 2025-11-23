@@ -31,3 +31,23 @@ export const BADGE_RARITY = {
   legendary: { name: 'Legendary', color: 'var(--rarity-legendary)' },
 };
 
+export const CHALLENGE_CATEGORIES = {
+  backend: { name: 'Backend', icon: '⚙️' },
+  frontend: { name: 'Frontend', icon: '🎨' },
+  devops: { name: 'DevOps', icon: '🚀' },
+  algorithm: { name: 'Algorithm', icon: '🧮' },
+};
+
+export const CHALLENGE_DIFFICULTY = {
+  small: { name: 'Small', xp: 20, color: 'var(--color-success)' },
+  medium: { name: 'Medium', xp: 50, color: 'var(--color-warning)' },
+  hard: { name: 'Hard', xp: 100, color: 'var(--color-error)' },
+};
+
+export const CONNECT_PACKAGES = [
+  { id: 1, connects: 10, price: 5.0, bonus: 0 },
+  { id: 2, connects: 50, price: 22.5, bonus: 5 },
+  { id: 3, connects: 100, price: 40.0, bonus: 15 },
+  { id: 4, connects: 250, price: 90.0, bonus: 50 },
+];
+
