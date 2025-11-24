@@ -11,5 +11,9 @@ export const walletApi = {
     });
   },
 
+  getConnectPackages: async () => {
+    return await axios.get('/connect-packages');
+  },
+
   
 };
