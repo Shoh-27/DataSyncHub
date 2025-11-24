@@ -5,5 +5,9 @@ export const gamificationApi = {
     return await axios.get('/gamification/stats');
   },
 
+  getBadges: async () => {
+    return await axios.get('/gamification/badges');
+  },
+
   
 };
