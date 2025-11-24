@@ -33,5 +33,9 @@ export const authApi = {
     return await axios.post('/auth/reset-password', data);
   },
 
+  updateProfile: async data => {
+    return await axios.put('/users/profile', data);
+  },
+
   
 };
