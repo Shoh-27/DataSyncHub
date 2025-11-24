@@ -19,5 +19,11 @@ export const walletApi = {
     return await axios.post('/payments/connect-purchase', { package_id: packageId });
   },
 
-  
+  confirmConnectPurchase: async paymentIntentId => {
+    return await axios.post('/payments/confirm-purchase', {
+      payment_intent_id: paymentIntentId,
+    });
+  },
+
+
 };
