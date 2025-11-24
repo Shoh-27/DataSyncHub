@@ -37,5 +37,9 @@ export const authApi = {
     return await axios.put('/users/profile', data);
   },
 
-  
+  deactivateAccount: async () => {
+    return await axios.post('/users/deactivate');
+  },
+
+
 };
