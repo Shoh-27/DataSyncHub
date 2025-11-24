@@ -31,5 +31,7 @@ export const walletApi = {
     });
   },
 
- 
+  createWithdrawal: async amount => {
+    return await axios.post('/payments/withdrawal', { amount });
+  },
 };
