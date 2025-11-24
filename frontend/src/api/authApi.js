@@ -17,5 +17,13 @@ export const authApi = {
     return await axios.get('/auth/me');
   },
 
+  resendVerification: async () => {
+    return await axios.post('/auth/resend-verification');
+  },
+
+  verifyEmail: async token => {
+    return await axios.post('/auth/verify-email', { token });
+  },
+
   
 };
