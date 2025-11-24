@@ -9,5 +9,13 @@ export const authApi = {
     return await axios.post('/auth/login', credentials);
   },
 
+  logout: async () => {
+    return await axios.post('/auth/logout');
+  },
+
+  getMe: async () => {
+    return await axios.get('/auth/me');
+  },
+
   
 };
