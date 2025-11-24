@@ -21,5 +21,9 @@ export const gamificationApi = {
     });
   },
 
-  
+  getAllBadges: async (category = null, rarity = null) => {
+    return await axios.get('/badges', {
+      params: { category, rarity },
+    });
+  },
 };
