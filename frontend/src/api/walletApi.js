@@ -25,5 +25,11 @@ export const walletApi = {
     });
   },
 
+  getPaymentHistory: async (type = null, limit = 50) => {
+    return await axios.get('/payments/history', {
+      params: { type, limit },
+    });
+  },
 
+ 
 };
