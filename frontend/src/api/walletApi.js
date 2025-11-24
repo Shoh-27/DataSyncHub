@@ -5,5 +5,11 @@ export const walletApi = {
     return await axios.get('/wallet');
   },
 
+  getConnectHistory: async (limit = 50, offset = 0) => {
+    return await axios.get('/wallet/connect-history', {
+      params: { limit, offset },
+    });
+  },
+
   
 };
