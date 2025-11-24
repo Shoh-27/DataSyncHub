@@ -9,5 +9,11 @@ export const gamificationApi = {
     return await axios.get('/gamification/badges');
   },
 
+  getActivityFeed: async (limit = 50) => {
+    return await axios.get('/gamification/activity-feed', {
+      params: { limit },
+    });
+  },
+
   
 };
