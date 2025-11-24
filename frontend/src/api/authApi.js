@@ -41,5 +41,7 @@ export const authApi = {
     return await axios.post('/users/deactivate');
   },
 
-
+  deleteAccount: async confirmation => {
+    return await axios.delete('/users/account', { data: { confirmation } });
+  },
 };
