@@ -15,5 +15,11 @@ export const gamificationApi = {
     });
   },
 
+  getLeaderboard: async (limit = 100) => {
+    return await axios.get('/gamification/leaderboard', {
+      params: { limit },
+    });
+  },
+
   
 };
