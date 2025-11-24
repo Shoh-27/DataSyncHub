@@ -15,5 +15,9 @@ export const walletApi = {
     return await axios.get('/connect-packages');
   },
 
+  createConnectPurchase: async packageId => {
+    return await axios.post('/payments/connect-purchase', { package_id: packageId });
+  },
+
   
 };
