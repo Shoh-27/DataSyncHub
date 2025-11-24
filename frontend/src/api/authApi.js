@@ -25,5 +25,13 @@ export const authApi = {
     return await axios.post('/auth/verify-email', { token });
   },
 
+  forgotPassword: async email => {
+    return await axios.post('/auth/forgot-password', { email });
+  },
+
+  resetPassword: async data => {
+    return await axios.post('/auth/reset-password', data);
+  },
+
   
 };
