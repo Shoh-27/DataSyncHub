@@ -16,6 +16,9 @@ const Input = ({
     className = '',
     ...props
 }) => {
+    const [showPassword, setShowPassword] = useState(false);
+
+    const inputType = type === 'password' && showPassword ? 'text' : type;
     return (
         <div className={`input-group ${className}`}>
             {label && (
@@ -41,7 +44,16 @@ const Input = ({
                     {...props}
                 />
 
-              
+                {type === 'password' && (
+                    <button
+                        type="button"
+                        className="input-icon-right"
+                        onClick={() => setShowPassword(!showPassword)}
+                        tabIndex={-1}
+                    >
+                        {showPassword ? '👁️' : '👁️‍🗨️'}
+                    </button>
+                )}
             </div>
 
             {error && <span className="input-error-message">{error}</span>}
