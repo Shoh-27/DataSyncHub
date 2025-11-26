@@ -1,0 +1,35 @@
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .input-with-icon {
+    padding-left: 40px;
+  }
+  
+  .input-icon-left {
+    position: absolute;
+    left: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    color: var(--color-text-muted);
+    pointer-events: none;
+    font-size: 1.2em;
+  }
+  
+  .input-icon-right {
+    position: absolute;
+    right: var(--spacing-md);
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    transition: color var(--transition-fast);
+    font-size: 1.2em;
+  }
+  
+  .input-icon-right:hover {
+    color: var(--color-text-primary);
+  }
