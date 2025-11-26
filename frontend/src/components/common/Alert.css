@@ -1,0 +1,18 @@
+.alert-close {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+    font-size: var(--font-size-lg);
+  }
+  
+  .alert-close:hover {
+    color: var(--color-text-primary);
+  }
