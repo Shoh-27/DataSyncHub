@@ -1,0 +1,28 @@
+.modal-sm {
+    max-width: 400px;
+  }
+  
+  .modal-md {
+    max-width: 600px;
+  }
+  
+  .modal-lg {
+    max-width: 800px;
+  }
+  
+  .modal-xl {
+    max-width: 1000px;
+  }
+  
+  @media (max-width: 768px) {
+    .modal {
+      max-width: 100%;
+      margin: 0;
+      border-radius: 0;
+      max-height: 100vh;
+    }
+  
+    .modal-backdrop {
+      padding: 0;
+    }
+  }
